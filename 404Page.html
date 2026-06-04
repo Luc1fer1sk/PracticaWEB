@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404(</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0178D6; 
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center; 
+      padding-left: 15%; 
+    }
+
+    .container {
+      max-width: 700px;
+    }
+
+    .sad-face {
+      font-size: 8rem;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      font-size: 1.8rem;
+      line-height: 1.4;
+      margin-bottom: 30px;
+    }
+
+    .percent {
+      font-size: 1.8rem;
+      margin-bottom: 170px;
+    }
+
+    .qr-section {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .qr-code img {
+      width: 120px;
+      height: 120px;
+    }
+
+    .details {
+      margin-left: 20px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #fff;
+    }
+
+    .details p {
+      margin-bottom: 10px;
+    }
+
+    .stop-code {
+      margin-top: 5px;
+    }
+
+    .home-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background-color: #46a7f2;
+      color: #0178D6; 
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      transition: background-color 0.2s ease;
+    }
+
+    .home-btn:hover {
+      background-color: #e6e6e6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="sad-face">:(</div>
+    
+    <div class="message">
+      Упс... Данной страницы не сущетсвует(
+    </div>
+    
+    <div class="percent">
+      404% complete
+    </div>
+
+    <div class="qr-section">
+      <div class="qr-code">
+        <img src="img/qr.png" alt="QR Code">
+      </div>
+      <div class="details">
+        <a href="index.html" class="home-btn">Вернуться на главную</a>
+        
+        <div class="stop-code">Код ошибки: 404</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

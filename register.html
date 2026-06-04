@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Регистрация - Мой дом - история (Овчинников Денис Владимирович)</title>
+  <link rel="author" href="https://t.me/Luc1fer1sk">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #f5f7fa, #e8ecf1, #f0f4f8, #f5f7fa);
+      background-size: 400% 400%;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b3d91 0%, #0066cc 50%, #0b3d91 100%);
+      color: white;
+      padding: 0 2rem; 
+      height: 80px; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px; 
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .header-logo {
+      height: 40px; 
+      width: auto;
+      border-radius: 4px;
+      border-right: 1px solid rgba(255, 255, 255, 0.3); 
+      padding-right: 15px; 
+    }
+
+    .header-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.2;
+      white-space: nowrap; 
+    }
+    
+    .header-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 0;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.95rem;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .nav-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 25%;
+      height: 50%;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-toggle {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .dropdown-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 15px;
+      height: 100%;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      z-index: 5;
+    }
+
+    .dropdown-arrow {
+      font-size: 0.65rem;
+      transition: transform 0.15s;
+    }
+
+    .dropdown-toggle:checked ~ .dropdown-menu {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dropdown-toggle:checked + .dropdown-label .dropdown-arrow,
+    .dropdown-toggle:checked ~ .dropdown-label .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      flex-direction: column;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(11, 61, 145, 0.25);
+      min-width: 230px;
+      z-index: 999;
+      padding: 0.4rem 0;
+      margin-top: 4px;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .dropdown-menu a {
+      padding: 0.75rem 1.3rem;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f0f4f8;
+      color: #0b3d91;
+    }
+
+    .dropdown-menu a::before {
+      content: '•';
+      color: #0b3d91;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .dropdown .nav-item:not(:last-child)::after {
+      display: none;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-decoration {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(11,61,145,0.08) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .bg-decoration.one { top: -100px; right: -100px; }
+    .bg-decoration.two { bottom: -100px; left: -100px; background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, transparent 70%); }
+
+    .register-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.8rem 2.5rem;
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 
+        0 20px 60px rgba(11, 61, 145, 0.12),
+        0 0 0 1px rgba(11, 61, 145, 0.08);
+      border-top: 4px solid transparent;
+      background-clip: padding-box;
+    }
+
+    .register-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0b3d91, #0066cc, #0b8fd9, #0066cc, #0b3d91);
+      background-size: 300% 100%;
+      border-radius: 20px 20px 0 0;
+      animation: gradientFlow 3s linear infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    .register-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .register-header::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #0b3d91, #0066cc);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+
+    .register-title {
+      color: #0b3d91;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .register-subtitle {
+      color: #666;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.3rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: #333;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem 1.1rem;
+      border: 2px solid #d1d9e6;
+      border-radius: 10px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: all 0.25s ease;
+      background: #f8fafc;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #0b3d91;
+      box-shadow: 0 0 0 4px rgba(11, 61, 145, 0.08);
+      background: white;
+    }
+
+    .form-group input::placeholder {
+      color: #aab4c4;
+    }
+
+    .register-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #0b3d91 0%, #0066cc 50%, #0b8fd9 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(11, 61, 145, 0.25);
+    }
+
+    .register-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.4s ease;
+    }
+
+    .register-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(11, 61, 145, 0.35);
+    }
+
+    .register-btn:hover::before {
+      left: 100%;
+    }
+
+    .login-redirect {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed #d1d9e6;
+    }
+
+    .login-redirect a {
+      color: #666;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .login-redirect a:hover {
+      color: #0b3d91;
+    }
+
+    .login-redirect a::before {
+      content: '←';
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+
+    .login-redirect a:hover::before {
+      transform: translateX(-3px);
+    }
+
+    .login-redirect strong {
+      color: #0b3d91;
+      font-weight: 600;
+    }
+
+    @keyframes cardAppear {
+      from { opacity: 0; transform: translateY(20px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .register-card {
+      animation: cardAppear 0.4s ease-out forwards;
+    }
+
+    footer {
+      background: linear-gradient(180deg, #f8fafc 0%, #f0f4f8 100%);
+      border-top: 1px solid #e2e8f0;
+      padding: 3rem 2rem 1.5rem;
+      margin-top: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: #0b3d91;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+
+    .footer-section p {
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .footer-section .tg-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #f1f5f9;
+      border-radius: 50%;
+      color: #0b3d91;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .footer-section .tg-link:hover {
+      background: #0b3d91;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-column h4 {
+      color: #334155;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1.2rem 0;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-column a {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .footer-column a::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #0b3d91;
+      font-size: 0.8rem;
+      transition: transform 0.2s;
+    }
+
+    .footer-column a:hover {
+      color: #0b3d91;
+    }
+
+    .footer-column a:hover::before {
+      transform: translateX(-2px);
+    }
+
+    .partner-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      transition: all 0.2s;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+      font-weight: 500;
+    }
+
+    .partner-link:hover {
+      color: #0b3d91;
+      border-left-color: #0b3d91;
+      background: rgba(11, 61, 145, 0.03);
+      padding-left: 14px;
+    }
+
+    .partner-link::before {
+      content: '🔗';
+      font-size: 0.85rem;
+    }
+
+    .subscribe-text {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .subscribe-form input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .subscribe-form input:focus {
+      border-color: #0b3d91;
+    }
+
+    .subscribe-form button {
+      padding: 0.75rem 1.2rem;
+      background: linear-gradient(135deg, #0b3d91 0%, #0066cc 100%);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .subscribe-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11, 61, 145, 0.3);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    .footer-section .tg-link img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+    .tg-custom-icon {
+  width: 24px;        
+  height: 24px;
+  object-fit: contain;
+  display: block;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0 1rem;
+        flex-direction: column; 
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .header-left {
+        margin-bottom: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+      .header-nav {
+        width: 100%;
+        justify-content: center;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        padding-top: 5px;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .header-logo {
+        height: 30px;
+        border-right: none; 
+        padding-right: 10px;
+      }
+      .nav-item span { display: none; }
+      .nav-item { padding: 0 10px; }
+      .register-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        border-radius: 16px;
+      }
+      .register-title { font-size: 1.6rem; }
+      .bg-decoration { display: none; }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-content > .footer-section:first-child {
+        grid-column: 1 / -1;
+      }
+
+      footer {
+        padding: 2rem 1rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-decoration one"></div>
+<div class="bg-decoration two"></div>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="logo-link">
+      <img src="img/Baranovichi_Coat_of_Arms_of_Baranavičy.svg (1).png" alt="Герб" class="header-logo">
+    </a>
+    <div>
+      <div class="header-title">Мой дом - история</div>
+      <div class="header-subtitle">Регистрация</div>
+    </div>
+  </div>
+
+  <nav class="header-nav">
+    <div class="nav-item dropdown">
+      <input type="checkbox" class="dropdown-toggle" id="materials-toggle">
+      <label for="materials-toggle" class="dropdown-label">
+        <span> Материалы</span>
+        <span class="dropdown-arrow">▼</span>
+      </label>
+      <div class="dropdown-menu">
+        <a href="404Page.html">Фотоархив</a>
+        <a href="404Page.html">Видео</a>
+        <a href="404Page.html">Статьи</a>
+        <a href="404Page.html">Документы</a>
+        <a href="404Page.html">Газетные вырезки</a>
+      </div>
+    </div>
+    <a href="404Page.html" class="nav-item"><span>Достопримечательности</span></a>
+    <a href="404Page.html" class="nav-item"><span>Карта</span></a>
+    <a href="Abt.html" class="nav-item"><span>О авторе</span></a>
+    <a href="Policy.html" class="nav-item"><span>Политика конфиденциальности</span></a>
+    <a href="404Page.html" class="nav-item"><span>Профиль</span></a>
+  </nav>
+</header>
+
+<main>
+  <div class="register-card">
+    <div class="register-header">
+      <h1 class="register-title">Создать аккаунт</h1>
+      <p class="register-subtitle">Присоединяйтесь к сообществу исследователей истории Барановичей</p>
+    </div>
+    
+    <form action="404Page.html" method="get">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="email">Электронная почта</label>
+          <input type="email" id="email" name="email" placeholder="name@example.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password" placeholder="••••••••">
+        </div>
+      </div>
+      
+      <button type="submit" class="register-btn">Зарегистрироваться</button>
+    </form>
+    
+    <div class="login-redirect">
+      <a href="404Page.html">Уже есть аккаунт? <strong>Войти</strong></a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Мой дом - история</h3>
+      <p>Исследуйте историю Барановичей через фотографии, документы и воспоминания. Каждый уголок города хранит свою уникальную историю.</p>
+      <a href="https://t.me/Luc1fer1sk" class="tg-link" target="_blank">
+        <img src="img/telegram_macos_bigsur_icon_189662.png" alt="Telegram">
+      </a>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Навигация</h4>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="Abt.html">О авторе</a></li>
+        <li><a href="404Page.html">Достопримечательности</a></li>
+        <li><a href="404Page.html">Карта</a></li>
+        <li><a href="404Page.html">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Ресурсы</h4>
+      <ul>
+        <li><a href="Sitemap.html">Карта сайта</a></li>
+        <li><a href="Abt.html">О разработчике</a></li>
+        <li><a href="404Page.html">Фотоархив</a></li>
+        <li><a href="404Page.html">Документы</a></li>
+        <li><a href="Policy.html">Политика конфиденциальности</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Партнёры</h4>
+      <ul>
+        <li>
+          <a href="https://bartc.by/index.php/ru/" class="partner-link" target="_blank" rel="noopener">
+            БТК
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Подписка</h4>
+      <p class="subscribe-text">Получайте новости о новых материалах и обновлениях проекта</p>
+      <form class="subscribe-form" action="404Page.html" method="get">
+        <input type="email" placeholder="Ваш email" required>
+        <button type="submit">→</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 "Мой дом - история". Все права защищены.</p>
+  </div>
+</footer>
+
+</body>
+</html>

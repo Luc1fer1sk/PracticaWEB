@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>О авторе - Мой дом - история Овчинников Денис Владимирович</title>
+  <link rel="author" href="https://t.me/Luc1fer1sk">
+  <style>
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #f5f7fa, #e8ecf1, #f0f4f8, #f5f7fa);
+      background-size: 400% 400%;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b3d91 0%, #0066cc 50%, #0b3d91 100%);
+      color: white;
+      padding: 0 2rem; 
+      height: 80px; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px; 
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .header-logo {
+      height: 40px; 
+      width: auto;
+      border-radius: 4px;
+      border-right: 1px solid rgba(255, 255, 255, 0.3); 
+      padding-right: 15px; 
+      transition: opacity 0.2s;
+    }
+    
+    .logo-link:hover .header-logo {
+      opacity: 0.8;
+    }
+
+    .header-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.2;
+      white-space: nowrap; 
+    }
+    
+    .header-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 0;
+      margin-left: 2rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.95rem;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .nav-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 25%;
+      height: 50%;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .dropdown {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-toggle {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .dropdown-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 15px;
+      height: 100%;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      z-index: 5;
+    }
+
+    .dropdown-arrow {
+      font-size: 0.65rem;
+      transition: transform 0.15s;
+    }
+
+    .dropdown-toggle:checked ~ .dropdown-menu {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dropdown-toggle:checked + .dropdown-label .dropdown-arrow,
+    .dropdown-toggle:checked ~ .dropdown-label .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      flex-direction: column;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(11, 61, 145, 0.25);
+      min-width: 230px;
+      z-index: 999;
+      padding: 0.4rem 0;
+      margin-top: 4px;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .dropdown-menu a {
+      padding: 0.75rem 1.3rem;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f0f4f8;
+      color: #0b3d91;
+    }
+
+    .dropdown-menu a::before {
+      content: '•';
+      color: #0b3d91;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .dropdown .nav-item:not(:last-child)::after {
+      display: none;
+    }
+    
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+      background: none;
+      border: none;
+      margin-left: 1rem;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+      transform-origin: center;
+    }
+
+    #menu-check:checked ~ header .menu-toggle span:nth-child(1) {
+      transform: rotate(45deg);
+      position: relative;
+      top: 9px;
+    }
+
+    #menu-check:checked ~ header .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-check:checked ~ header .menu-toggle span:nth-child(3) {
+      transform: rotate(-45deg);
+      position: relative;
+      top: -9px;
+    }
+
+    #menu-check {
+      display: none;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100vh;
+      background: white;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+
+    #menu-check:checked ~ .sidebar {
+      transform: translateX(0);
+    }
+
+    .sidebar-header {
+      padding: 1.2rem 1.5rem;
+      background: linear-gradient(135deg, #0b3d91, #0066cc);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .sidebar-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sidebar-menu {
+      padding: 1rem 0;
+      flex: 1;
+    }
+
+    .sidebar-item {
+      display: block;
+      padding: 0.9rem 1.5rem;
+      color: #333;
+      text-decoration: none;
+      font-size: 1rem;
+      border-left: 4px solid transparent;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .sidebar-item:hover {
+      background: #f0f4f8;
+      border-left-color: #0b3d91;
+      color: #0b3d91;
+    }
+
+    .sidebar-dropdown {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .sidebar-dropdown-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #333;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .sidebar-dropdown-toggle:hover {
+      background: #f0f4f8;
+      color: #0b3d91;
+    }
+
+    .sidebar-dropdown input {
+      display: none;
+    }
+
+    .sidebar-dropdown input:checked + .sidebar-dropdown-toggle .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .sidebar-dropdown-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #fafafa;
+    }
+
+    .sidebar-dropdown input:checked ~ .sidebar-dropdown-menu {
+      max-height: 300px;
+    }
+
+    .sidebar-dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1.5rem 0.7rem 2.5rem;
+      color: #555;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-left: 4px solid transparent;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .sidebar-dropdown-menu a:hover {
+      background: #e8ecf1;
+      border-left-color: #0066cc;
+      color: #0b3d91;
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    #menu-check:checked ~ .sidebar-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .author-container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .author-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 100px;
+    }
+
+    .author-photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #0b3d91;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #e0e7ff, #f0f4f8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #0b3d91;
+    }
+
+    .author-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 0.3rem 0;
+      color: #0b3d91;
+      text-align: center;
+    }
+
+    .author-role {
+      font-size: 0.95rem;
+      color: #666;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      font-size: 1.1rem;
+      min-width: 24px;
+    }
+
+    .info-label {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f0f4f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: background 0.2s;
+      color: #0b3d91;
+    }
+
+    .social-link:hover {
+      background: #0b3d91;
+      color: white;
+    }
+
+    .author-bio {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .bio-title {
+      font-size: 1.5rem;
+      color: #0b3d91;
+      margin: 0 0 1rem 0;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid #f0f4f8;
+    }
+
+    .bio-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #444;
+      margin: 0;
+      text-align: justify;
+    }
+
+    .bio-text p {
+      margin: 0 0 1.2rem 0;
+    }
+
+    .bio-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      background: linear-gradient(180deg, #f8fafc 0%, #f0f4f8 100%);
+      border-top: 1px solid #e2e8f0;
+      padding: 3rem 2rem 1.5rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: #0b3d91;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+
+    .footer-section p {
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .footer-section .tg-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #f1f5f9;
+      border-radius: 50%;
+      color: #0b3d91;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      overflow: hidden;
+    }
+    .footer-section .tg-link img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+    .footer-section .tg-link:hover {
+      background: #0b3d91;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-column h4 {
+      color: #334155;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1.2rem 0;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-column a {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .footer-column a::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #0b3d91;
+      font-size: 0.8rem;
+      transition: transform 0.2s;
+    }
+
+    .footer-column a:hover {
+      color: #0b3d91;
+    }
+
+    .footer-column a:hover::before {
+      transform: translateX(-2px);
+    }
+
+    .partner-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      transition: all 0.2s;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+      font-weight: 500;
+    }
+
+    .partner-link:hover {
+      color: #0b3d91;
+      border-left-color: #0b3d91;
+      background: rgba(11, 61, 145, 0.03);
+      padding-left: 14px;
+    }
+
+    .partner-link::before {
+      content: '🔗';
+      font-size: 0.85rem;
+    }
+
+    .subscribe-text {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .subscribe-form input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .subscribe-form input:focus {
+      border-color: #0b3d91;
+    }
+
+    .subscribe-form button {
+      padding: 0.75rem 1.2rem;
+      background: linear-gradient(135deg, #0b3d91 0%, #0066cc 100%);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .subscribe-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11, 61, 145, 0.3);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    .bio-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.bio-text-left {
+  flex: 1;
+}
+
+.bio-text-left p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.bio-image {
+  flex: 0 0 180px;
+  margin: 0;
+}
+
+.bio-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(11, 61, 145, 0.15);
+  display: block;
+}
+.tg-custom-icon {
+  width: 24px;        
+  height: 24px;
+  object-fit: contain;
+  display: block;
+    }
+    @media (max-width: 768px) {
+      header {
+        padding: 0 1rem;
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      
+      .header-left {
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      
+      .header-logo {
+        height: 35px;
+        border-right: none; 
+        padding-right: 10px;
+      }
+      
+      .header-title {
+        font-size: 1rem;
+      }
+      
+      .header-subtitle {
+        display: none;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .author-container {
+        grid-template-columns: 1fr;
+      }
+
+      .author-card {
+        position: static;
+        text-align: center;
+      }
+
+      .author-photo {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .info-list {
+        text-align: left;
+        display: inline-block;
+      }
+
+      .author-bio {
+        padding: 1.5rem;
+      }
+
+      .bio-title {
+        font-size: 1.3rem;
+      }
+
+      .bio-text {
+        font-size: 1rem;
+      }
+
+      .sidebar {
+        width: 260px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-content > .footer-section:first-child {
+        grid-column: 1 / -1;
+      }
+
+      footer {
+        padding: 2rem 1rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-check">
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="logo-link">
+      <img src="img/Baranovichi_Coat_of_Arms_of_Baranavičy.svg (1).png" alt="Герб" class="header-logo">
+    </a>
+    <div>
+      <div class="header-title">Мой дом - история</div>
+      <div class="header-subtitle">О авторе</div> 
+    </div>
+  </div>
+
+  <nav class="header-nav">
+    <div class="nav-item dropdown">
+      <input type="checkbox" class="dropdown-toggle" id="materials-toggle">
+      <label for="materials-toggle" class="dropdown-label">
+        <span>Материалы</span>
+        <span class="dropdown-arrow">▼</span>
+      </label>
+      <div class="dropdown-menu">
+        <a href="404Page.html">Фотоархив</a>
+        <a href="404Page.html">Видео</a>
+        <a href="404Page.html">Статьи</a>
+        <a href="404Page.html">Документы</a>
+        <a href="404Page.html">Газетные вырезки</a>
+      </div>
+    </div>
+
+    <a href="404Page.html" class="nav-item">
+      <span>Достопримечательности</span>
+    </a>
+    <a href="404Page.html" class="nav-item">
+      <span>Карта</span>
+    </a>
+    <a href="Abt.html" class="nav-item">
+      <span>О авторе</span>
+    </a>
+    <a href="Policy.html" class="nav-item">
+      <span>Политика</span>
+    </a>
+    <a href="vhod.html" class="nav-item">
+      <span>Профиль</span>
+    </a>
+  </nav>
+
+  <label for="menu-check" class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+</header>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h3 class="sidebar-title">Меню</h3>
+    <label for="menu-check" class="sidebar-close">&times;</label>
+  </div>
+  
+  <nav class="sidebar-menu">
+    <div class="sidebar-dropdown">
+      <input type="checkbox" id="materials-sub">
+      <label for="materials-sub" class="sidebar-dropdown-toggle">
+        <span>Материалы</span>
+        <span class="dropdown-arrow">▼</span>
+      </label>
+      <div class="sidebar-dropdown-menu">
+        <a href="404Page.html">Фотоархив</a>
+        <a href="404Page.html">Видео</a>
+        <a href="404Page.html">Статьи</a>
+        <a href="404Page.html">Документы</a>
+        <a href="404Page.html">Газетные вырезки</a>
+      </div>
+    </div>
+
+    <a href="404Page.html" class="sidebar-item">Достопримечательности</a>
+    <a href="404Page.html" class="sidebar-item">Карта</a>
+    <a href="Abt.html" class="sidebar-item">О авторе</a>
+    <a href="Policy.html" class="sidebar-item">Политика</a>
+    <a href="vhod.html" class="sidebar-item">Профиль</a>
+  </nav>
+</aside>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<main>
+  <div class="author-container">
+    
+    <aside class="author-card">
+      <img src="img/photo_2026-05-15_23-18-38.jpg" alt="Фото автора" class="author-photo" 
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="author-photo" style="display: none;">👤</div>
+      
+      <h2 class="author-name">Овчинников Денис Владимирович</h2>
+      <p class="author-role">Знаю рецептуру Воппера</p>
+      
+      <ul class="info-list">  
+        <li class="info-item">
+          <span class="info-icon">📍</span>
+          <div>
+            <div class="info-label">Место рождения</div>
+            <div class="info-value">РФ Г. Санкт-Петербург</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <span class="info-icon">💼</span>
+          <div>
+            <div class="info-label">Место работы</div>
+            <div class="info-value">Бургер Кинг</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <span class="info-icon">🎂</span>
+          <div>
+            <div class="info-label">День рождения</div>
+            <div class="info-value">21.07.2006 (19)</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <span class="info-icon">🎓</span>
+          <div>
+            <div class="info-label">Образование</div>
+            <div class="info-value">9 классов</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <span class="info-icon">📧</span>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value">deniskalol227228@yandex.ru</div>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="social-links">
+        <a href="https://t.me/Luc1fer1sk" target="_blank" class="social-link" title="Telegram">✈️</a>
+      </div>
+    </aside>
+
+    <article class="author-bio">
+  <h3 class="bio-title">Обо мне</h3>
+  <div class="bio-text">
+    <div class="bio-content">
+      <div class="bio-text-left">
+        <p>Я, Овчинников Денис Владимирович, родился 21.07.2006 г. в г. Санкт-Петербурге в Российской Федерации. Гражданин России,
+           русский, не женат, образование среднее общее, студент колледжа.
+	С момента рождения по 2023 год проживал и был постоянно прописан в г. Санкт-Петербурге Ленинградской области Российской Федерации.
+	В этот период обучался и закончил 9 классов ГБОУ СОШ №594. С августа 2022 по май 2023 работал в сети реторанов “Вкусно и точка”
+   в должности работник ПБО, в указанный период проживал и был зарегистрирован по адресу: г. Санкт – Петербург, ул. Ленсовета, д.10, кв. 208.
+	С мая 2023 по май 2024 проживал по и был зарегистрирован  по адресу: г. Санкт-Петербург, ул. Ленсовета, д.10, кв. 208. 
+31.08.2024 прибыл из Росси в Республику Беларусь, г.Барановичи, с целью обучения в Барановичском Технологическом Колледже БЕЛКООПСОЮЗА.
+ Временно пребываю по адресу ул. Брестская д.13 к.224.
+	Имею паспорт гражданина России 37 21 422242, выданный 16.03.2023г. ГУ МВД России по г. Санкт – Петерубргу и Ленинградской области.
+	К административной и угловной ответственности не привлекался.
+</p>
+      </div>
+    </div>
+    
+  </div>
+</article>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Мой дом - история</h3>
+      <p>Если у вас есть архивные фотографии или воспоминания, связанные с горисполкомом Барановичей, — поделитесь с нами! Исследуйте историю Барановичей через фотографии, документы и воспоминания. Каждый уголок города хранит свою уникальную историю.</p>
+      <a href="https://t.me/Luc1fer1sk" class="tg-link" target="_blank">
+        <img src="img/telegram_macos_bigsur_icon_189662.png" alt="Telegram">
+      </a>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Навигация</h4>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="Abt.html">О авторе</a></li>
+        <li><a href="404Page.html">Достопримечательности</a></li>
+        <li><a href="404Page.html">Карта</a></li>
+        <li><a href="404Page.html">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Ресурсы</h4>
+      <ul>
+        <li><a href="Sitemap.html">Карта сайта</a></li>
+        <li><a href="Abt.html">О разработчике</a></li>
+        <li><a href="404Page.html">Фотоархив</a></li>
+        <li><a href="404Page.html">Документы</a></li>
+        <li><a href="Policy.html">Политика конфиденциальности</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Партнёры</h4>
+      <ul>
+        <li>
+          <a href="https://bartc.by/index.php/ru/" class="partner-link" target="_blank" rel="noopener">
+            БТК
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Подписка</h4>
+      <p class="subscribe-text">Получайте новости о новых материалах и обновлениях проекта</p>
+      <form class="subscribe-form" action="404Page.html" method="get">
+        <input type="email" placeholder="Ваш email" required>
+        <button type="submit">→</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2026 "Мой дом - история". Все права защищены.</p>
+  </div>
+</footer>
+
+</body>
+</html>
